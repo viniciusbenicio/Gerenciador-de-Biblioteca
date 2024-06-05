@@ -1,3 +1,4 @@
+using GerenciadorLivro.Application.Commands.CreateLivro;
 using GerenciadorLivro.Core.Repositories;
 using GerenciadorLivro.Infrastructure;
 using GerenciadorLivro.Infrastructure.Persistence.Repositories;
@@ -25,7 +26,8 @@ namespace GerenciadorLivro.API
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<GerenciadorLivroDbContext>(options => options.UseSqlServer(connectionString));
-            
+            services.AddMediatR(opt => opt.RegisterServicesFromAssemblyContaining(typeof(CreateLivroCommand)));
+
             services.AddScoped<ILivroRepository, LivroRepository>();
 
 

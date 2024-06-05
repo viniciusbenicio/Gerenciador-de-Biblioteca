@@ -4,14 +4,16 @@ using GerenciadorLivro.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GerenciadorLivro.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(GerenciadorLivroDbContext))]
-    partial class GerenciadorLivroDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240605014626_AtivoLivro")]
+    partial class AtivoLivro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,7 +62,7 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Migrations
                     b.Property<int>("AnoPublicacao")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Ativo")
+                    b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
                     b.Property<string>("Autor")

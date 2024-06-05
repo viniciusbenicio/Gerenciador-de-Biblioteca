@@ -14,5 +14,13 @@
         public string Autor { get; private set; }
         public string ISBN { get; private set; }
         public int AnoPublicacao { get; private set; }
+        public bool? Ativo { get; private set; }
+
+        public void Desativar()
+        {
+            Ativo = false;
+        }
     }
+
+
 }

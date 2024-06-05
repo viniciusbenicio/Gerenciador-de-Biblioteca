@@ -9,6 +9,7 @@ namespace GerenciadorLivro.Core.Repositories
         Task<List<Livro>> GetAllAsync();
         Task<Livro> GetByIdAsync(int id);
         Task AddAsync(Livro livro);
-        void DeleteById(int id);
+        Task SaveChangesAsync();
+        Task RemoveAsync(int id);
     }
 }

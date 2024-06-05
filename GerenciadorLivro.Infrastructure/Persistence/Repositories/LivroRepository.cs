@@ -29,11 +29,17 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Repositories
             await _context.Livros.AddAsync(livro);
             await _context.SaveChangesAsync();
         }
-
-        public void DeleteById(int id)
+        public async Task SaveChangesAsync()
         {
-            throw new System.NotImplementedException();
+            await _context.SaveChangesAsync();
         }
 
+        public async Task RemoveAsync(int id)
+        {
+            var livro = await _context.Livros.FirstOrDefaultAsync(x => x.Id == id);
+            livro?.Desativar();
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

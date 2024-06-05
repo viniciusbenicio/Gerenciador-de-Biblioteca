@@ -1,5 +1,7 @@
-﻿using GerenciadorLivro.Core.Entites;
-using GerenciadorLivro.Core.Repositories;
+﻿using GerenciadorLivro.Application.Commands.CreateLivro;
+using GerenciadorLivro.Application.Queries.GetAllLivros;
+using GerenciadorLivro.Application.Queries.GetByIdLivro;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -8,34 +10,37 @@ namespace GerenciadorLivro.API.Controllers
     [Route("api/livros")]
     public class LivroController : ControllerBase
     {
-        private readonly ILivroRepository _repository;
-        public LivroController(ILivroRepository repository)
+        private readonly IMediator _mediator;
+        public LivroController(IMediator mediator)
         {
-            _repository = repository;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(string query)
         {
-           var livros = await _repository.GetAllAsync();
+            var getAllLivros = new GetAllLivrosQuery(query);
+            await _mediator.Send(getAllLivros);
 
-            return Ok(livros);
+            return Ok(getAllLivros);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            return Ok();
+            var query = new GetByIdLivroQuery(id);
+
+            var livro = await _mediator.Send(query);
+
+            return Ok(livro);
         }
         
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Livro model)
+        public async Task<IActionResult> Post([FromBody] CreateLivroCommand command)
         {
-            var livro = new Livro("Teste", "Teste", "Teste", 2024);
+            var id = await _mediator.Send(command);
 
-            await _repository.AddAsync(livro);
-            
-            return Ok(model);
+            return CreatedAtAction(nameof(GetById), new { id = id }, command);
         }
 
         [HttpPost("emprestimo/{id}")]

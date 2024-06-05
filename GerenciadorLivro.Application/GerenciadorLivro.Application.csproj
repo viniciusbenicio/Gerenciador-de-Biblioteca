@@ -17,11 +17,8 @@
 
 
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="InputModels\" />
-    <Folder Include="Queries\" />
     <Folder Include="Validators\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>

@@ -9,7 +9,6 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Livro> builder)
         {
             builder.HasKey(l => l.Id);
-                    
         }
     }
 }

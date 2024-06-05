@@ -1,4 +1,5 @@
 ﻿using GerenciadorLivro.Core.Entites;
+using GerenciadorLivro.Core.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -7,15 +8,18 @@ namespace GerenciadorLivro.API.Controllers
     [Route("api/livros")]
     public class LivroController : ControllerBase
     {
-        public LivroController()
+        private readonly ILivroRepository _repository;
+        public LivroController(ILivroRepository repository)
         {
-
+            _repository = repository;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok();
+           var livros = await _repository.GetAllAsync();
+
+            return Ok(livros);
         }
 
         [HttpGet("{id}")]
@@ -27,6 +31,10 @@ namespace GerenciadorLivro.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Livro model)
         {
+            var livro = new Livro("Teste", "Teste", "Teste", 2024);
+
+            await _repository.AddAsync(livro);
+            
             return Ok(model);
         }
 

@@ -12,7 +12,7 @@ namespace GerenciadorLivro.Core.Entites
         }
 
         public int IdUsuario { get; private set; }
-        public Usuario Usuario { get; private set; }
+        public Usuario Usuario { get; set; }
         public int IdLivro { get; private set; }
         public Livro Livro { get; private set; }
         public DateTime DataEmprestimo { get; private set; }

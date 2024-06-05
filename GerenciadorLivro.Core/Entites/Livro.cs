@@ -14,7 +14,5 @@
         public string Autor { get; private set; }
         public string ISBN { get; private set; }
         public int AnoPublicacao { get; private set; }
-        public int IdUsuario { get; private set; }
-        public Usuario Usuario { get; private set; }
     }
 }

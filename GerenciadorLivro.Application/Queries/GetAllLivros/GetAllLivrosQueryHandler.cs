@@ -19,9 +19,9 @@ namespace GerenciadorLivro.Application.Queries.GetAllLivros
         {
             var livros = await _livroRepository.GetAllAsync();
 
-            var livroViewModel = livros.Select(l => new LivroViewModel(l.Titulo, l.Autor, l.ISBN, l.AnoPublicacao, l.Ativo)).ToList();
+            var livroViewModel = livros.Where(l => l.Ativo == true).Select(l => new LivroViewModel(l.Titulo, l.Autor, l.ISBN, l.AnoPublicacao, l.Ativo));
 
-            return livroViewModel;
+            return livroViewModel.ToList();
         }
     }
 }

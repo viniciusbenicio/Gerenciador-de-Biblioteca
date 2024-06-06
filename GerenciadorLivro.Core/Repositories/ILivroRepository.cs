@@ -10,6 +10,6 @@ namespace GerenciadorLivro.Core.Repositories
         Task<Livro> GetByIdAsync(int id);
         Task AddAsync(Livro livro);
         Task SaveChangesAsync();
-        Task RemoveAsync(int id);
+        Task<int> RemoveAsync(int id);
     }
 }

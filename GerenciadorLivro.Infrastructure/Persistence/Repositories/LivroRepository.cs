@@ -34,12 +34,14 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task RemoveAsync(int id)
+        public async Task<int> RemoveAsync(int id)
         {
             var livro = await _context.Livros.FirstOrDefaultAsync(x => x.Id == id);
             livro?.Desativar();
 
             await _context.SaveChangesAsync();
+
+            return livro.Id;
         }
     }
 }

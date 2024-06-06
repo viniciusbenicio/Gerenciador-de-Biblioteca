@@ -10,7 +10,7 @@ namespace GerenciadorLivro.Application.Queries.GetAllLivros
         {
             Query = query;
         }
-
+        
         public string Query { get; set; }
     }
 }

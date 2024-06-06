@@ -1,4 +1,5 @@
 ﻿using GerenciadorLivro.Application.Commands.CreateLivro;
+using GerenciadorLivro.Application.Commands.RemoveLivro;
 using GerenciadorLivro.Application.Queries.GetAllLivros;
 using GerenciadorLivro.Application.Queries.GetByIdLivro;
 using MediatR;
@@ -20,9 +21,9 @@ namespace GerenciadorLivro.API.Controllers
         public async Task<IActionResult> Get(string query)
         {
             var getAllLivros = new GetAllLivrosQuery(query);
-            await _mediator.Send(getAllLivros);
+            var allLivros = await _mediator.Send(getAllLivros);
 
-            return Ok(getAllLivros);
+            return Ok(allLivros);
         }
 
         [HttpGet("{id}")]
@@ -34,7 +35,7 @@ namespace GerenciadorLivro.API.Controllers
 
             return Ok(livro);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateLivroCommand command)
         {
@@ -56,9 +57,11 @@ namespace GerenciadorLivro.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete([FromBody] RemoveLivroCommand command)
         {
-            return Ok();
+            var id = await _mediator.Send(command);
+
+            return Ok(id);
         }
 
     }

@@ -1,7 +1,9 @@
-﻿using GerenciadorLivro.Application.Commands.CreateLivro;
+﻿using GerenciadorLivro.Application.Commands.CreateEmprestimo;
+using GerenciadorLivro.Application.Commands.CreateLivro;
 using GerenciadorLivro.Application.Commands.RemoveLivro;
 using GerenciadorLivro.Application.Queries.GetAllLivros;
 using GerenciadorLivro.Application.Queries.GetByIdLivro;
+using GerenciadorLivro.Core.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -44,10 +46,11 @@ namespace GerenciadorLivro.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
         }
 
-        [HttpPost("emprestimo/{id}")]
-        public async Task<IActionResult> Emprestimo()
+        [HttpPost("emprestimo")]
+        public async Task<IActionResult> Emprestimo([FromBody] CreateEmprestimoCommand command)
         {
-            return Ok();
+            await _mediator.Send(command);
+            return Ok("Emprestimo realizado com sucesso.");
         }
 
         [HttpPut("devolver/{id}")]

@@ -32,6 +32,7 @@ namespace GerenciadorLivro.API
 
             services.AddScoped<ILivroRepository, LivroRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IEmprestimoRepository, EmprestimoRepository>();
 
 
             services.AddControllers();

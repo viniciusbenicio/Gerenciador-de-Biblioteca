@@ -1,5 +1,8 @@
+using FluentValidation.AspNetCore;
+using GerenciadorLivro.API.Filters;
 using GerenciadorLivro.Application.Commands.CreateLivro;
 using GerenciadorLivro.Application.Commands.CreateUsuario;
+using GerenciadorLivro.Application.Validators;
 using GerenciadorLivro.Core.Repositories;
 using GerenciadorLivro.Infrastructure;
 using GerenciadorLivro.Infrastructure.Persistence.Repositories;
@@ -35,7 +38,8 @@ namespace GerenciadorLivro.API
             services.AddScoped<IEmprestimoRepository, EmprestimoRepository>();
 
 
-            services.AddControllers();
+            services.AddControllers(opt => opt.Filters.Add(typeof(ValidatorFilter))).AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateLivroCommandValidator>());
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GerenciadorLivro.API", Version = "v1" });

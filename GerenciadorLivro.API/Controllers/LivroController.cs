@@ -6,6 +6,7 @@ using GerenciadorLivro.Application.Queries.GetByIdLivro;
 using GerenciadorLivro.Core.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GerenciadorLivro.API.Controllers

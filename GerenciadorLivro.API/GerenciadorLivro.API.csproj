@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Filters\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\GerenciadorLivro.Application\GerenciadorLivro.Application.csproj" />
     <ProjectReference Include="..\GerenciadorLivro.Core\GerenciadorLivro.Core.csproj" />
   </ItemGroup>

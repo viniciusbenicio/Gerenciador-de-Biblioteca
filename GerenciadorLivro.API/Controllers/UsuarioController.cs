@@ -14,11 +14,30 @@ namespace GerenciadorLivro.API.Controllers
             _mediator = mediator;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Get(string query)
+        {
+            return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            return Ok();
+
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateUsuarioCommand command)
         {
             await _mediator.Send(command);
 
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put()
+        {
             return Ok();
         }
     }

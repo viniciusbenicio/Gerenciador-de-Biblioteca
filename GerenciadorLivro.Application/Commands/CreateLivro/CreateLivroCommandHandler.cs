@@ -16,6 +16,7 @@ namespace GerenciadorLivro.Application.Commands.CreateLivro
         public async Task<int> Handle(CreateLivroCommand request, CancellationToken cancellationToken)
         {
             var livro = new Livro(request.Titulo, request.Autor, request.ISBN, request.AnoPublicacao);
+            livro.Ativar();
 
             await _repository.AddAsync(livro);
 

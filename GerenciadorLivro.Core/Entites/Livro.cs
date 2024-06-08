@@ -20,6 +20,19 @@
         {
             Ativo = false;
         }
+
+        public void Ativar()
+        {
+            Ativo = true;   
+        }
+
+        public void Atualizar(string titulo, string autor, string iSBN, int anoPublicacao)
+        {
+            Titulo = titulo;
+            Autor = autor;
+            ISBN = iSBN;
+            AnoPublicacao = anoPublicacao;
+        }
     }
 
 

@@ -1,12 +1,10 @@
-﻿using GerenciadorLivro.Application.Commands.CreateEmprestimo;
-using GerenciadorLivro.Application.Commands.CreateLivro;
+﻿using GerenciadorLivro.Application.Commands.CreateLivro;
 using GerenciadorLivro.Application.Commands.RemoveLivro;
+using GerenciadorLivro.Application.Commands.UpdateLivro;
 using GerenciadorLivro.Application.Queries.GetAllLivros;
 using GerenciadorLivro.Application.Queries.GetByIdLivro;
-using GerenciadorLivro.Core.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GerenciadorLivro.API.Controllers
@@ -47,17 +45,12 @@ namespace GerenciadorLivro.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
         }
 
-        [HttpPost("emprestimo")]
-        public async Task<IActionResult> Emprestimo([FromBody] CreateEmprestimoCommand command)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put([FromBody] UpdateLivroCommand command)
         {
             await _mediator.Send(command);
-            return Ok("Emprestimo realizado com sucesso.");
-        }
 
-        [HttpPut("devolver/{id}")]
-        public async Task<IActionResult> DevolverLivro()
-        {
-            return Ok();
+            return Ok("Atualizado com sucesso.");
         }
 
         [HttpDelete("{id}")]
@@ -68,5 +61,17 @@ namespace GerenciadorLivro.API.Controllers
             return Ok(id);
         }
 
+        //[HttpPost("emprestimo")]
+        //public async Task<IActionResult> Emprestimo([FromBody] CreateEmprestimoCommand command)
+        //{
+        //    await _mediator.Send(command);
+        //    return Ok("Emprestimo realizado com sucesso.");
+        //}
+
+        //[HttpPut("devolver/{id}")]
+        //public async Task<IActionResult> DevolverLivro()
+        //{
+        //    return Ok();
+        //}
     }
 }

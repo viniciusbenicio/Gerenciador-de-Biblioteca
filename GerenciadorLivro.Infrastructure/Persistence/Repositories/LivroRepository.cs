@@ -29,6 +29,11 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Repositories
             await _context.Livros.AddAsync(livro);
             await _context.SaveChangesAsync();
         }
+        public void Update(Livro livro)
+        {
+            _context.Livros.Update(livro);
+            _context.SaveChanges(); 
+        }
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();

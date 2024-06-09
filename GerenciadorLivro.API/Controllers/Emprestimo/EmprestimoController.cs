@@ -38,7 +38,7 @@ namespace GerenciadorLivro.API.Controllers.Emprestimo
 
         }
 
-        [HttpPost]
+        [HttpPost("")]
         public async Task<IActionResult> Post([FromBody] CreateEmprestimoCommand command)
         {
             var id = await _mediator.Send(command);

@@ -17,7 +17,7 @@ namespace GerenciadorLivro.Application.Queries.EmprestimoQueries.GetByIdEmpresti
         {
             var emprestimo = await _repository.GetByIdAsync(request.Id);
 
-            var emprestimoViewModel = new EmprestimoViewModel();
+            var emprestimoViewModel = new EmprestimoViewModel(emprestimo.UsuarioId, emprestimo.Usuario.Nome, emprestimo.LivroId,emprestimo.Livro.Titulo, emprestimo.DataEmprestimo);
 
             return emprestimoViewModel;
         }

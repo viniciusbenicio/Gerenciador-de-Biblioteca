@@ -9,20 +9,22 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Repositories
     public class EmprestimoRepository : IEmprestimoRepository
     {
         private readonly GerenciadorLivroDbContext _context;
-        public EmprestimoRepository(GerenciadorLivroDbContext context)
+        private readonly ILivroRepository _livroRepository;
+        public EmprestimoRepository(GerenciadorLivroDbContext context, ILivroRepository livroRepository)
         {
             _context = context;
+            _livroRepository = livroRepository;
         }
 
         public async Task<List<Emprestimo>> GetAllAsync()
         {
-            return await _context.Emprestimo.Include(e => e.Usuario).Include(e => e.Livro).ToListAsync();
+            return await _context.Emprestimo.Include(x => x.Usuario).Include(x => x.Livro).ToListAsync();
 
         }
 
         public async Task<Emprestimo> GetByIdAsync(int id)
         {
-            return await _context.Emprestimo.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Emprestimo.Include(x => x.Usuario).Include(x => x.Livro).FirstOrDefaultAsync(x => x.Id == id);
 
         }
 
@@ -55,7 +57,7 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Repositories
 
         public async Task<Emprestimo> RealizarEmprestimo(int idLivro, int idUsuario)
         {
-            var livro = await this.GetByIdAsync(idLivro);
+            var livro = await _livroRepository.GetByIdAsync(idLivro);
 
             if (livro is null)
                 return null;

@@ -16,7 +16,8 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Migrations
                     Titulo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Autor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ISBN = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AnoPublicacao = table.Column<int>(type: "int", nullable: false)
+                    AnoPublicacao = table.Column<int>(type: "int", nullable: false),
+                    Ativo = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,10 +44,8 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdUsuario = table.Column<int>(type: "int", nullable: false),
-                    UsuarioId = table.Column<int>(type: "int", nullable: true),
-                    IdLivro = table.Column<int>(type: "int", nullable: false),
-                    LivroId = table.Column<int>(type: "int", nullable: true),
+                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    LivroId = table.Column<int>(type: "int", nullable: false),
                     DataEmprestimo = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -57,13 +56,13 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Migrations
                         column: x => x.LivroId,
                         principalTable: "Livros",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Emprestimo_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

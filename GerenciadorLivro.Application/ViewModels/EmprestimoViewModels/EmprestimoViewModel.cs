@@ -5,23 +5,20 @@ namespace GerenciadorLivro.Application.ViewModels.EmprestimoViewModels
 {
     public class EmprestimoViewModel
     {
-        public EmprestimoViewModel()
+        
+        public EmprestimoViewModel(int usuarioId, string nome, int idLivro, string titulo, DateTime dataEmprestimo)
         {
-
-        }
-        public EmprestimoViewModel(int idUsuario, Usuario usuario, int idLivro, Livro livro, DateTime dataEmprestimo)
-        {
-            IdUsuario = idUsuario;
-            Usuario = usuario;
+            UsuarioId = usuarioId;
+            Nome = nome;
             IdLivro = idLivro;
-            Livro = livro;
+            Titulo = titulo;
             DataEmprestimo = dataEmprestimo;
         }
 
-        public int IdUsuario { get; set; }
-        public Usuario Usuario { get; set; }
+        public int UsuarioId { get; set; }
+        public string Nome { get; set; }
         public int IdLivro { get; set; }
-        public Livro Livro { get; set; }
+        public string Titulo { get; set; }  
         public DateTime DataEmprestimo { get; set; }
     }
 }

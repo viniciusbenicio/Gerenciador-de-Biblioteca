@@ -1,10 +1,11 @@
 ﻿using MediatR;
+using System;
 
 namespace GerenciadorLivro.Application.Commands.EmprestimoCQRS.CreateEmprestimo
 {
     public class CreateEmprestimoCommand : IRequest<int>
     {
-        public int IdUsuario { get; set; }
-        public int IdLivro { get; set; }
+        public int UsuarioId { get; set; }
+        public int LivroId { get; set; }
     }
 }

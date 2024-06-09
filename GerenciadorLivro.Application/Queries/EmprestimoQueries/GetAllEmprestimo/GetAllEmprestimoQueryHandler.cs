@@ -18,7 +18,7 @@ namespace GerenciadorLivro.Application.Queries.EmprestimoQueries.GetAllEmprestim
         public async Task<List<EmprestimoViewModel>> Handle(GetAllEmprestimoQuery request, CancellationToken cancellationToken)
         {
             var emprestimos = await _repository.GetAllAsync();
-            var empresitmoViewModel = emprestimos.Select(e => new EmprestimoViewModel(e.Id, e.Usuario, e.IdLivro, e.Livro, e.DataEmprestimo));
+            var empresitmoViewModel = emprestimos.Select(e => new EmprestimoViewModel(e.UsuarioId, e.Usuario.Nome, e.LivroId, e.Livro.Titulo, e.DataEmprestimo));
 
             return empresitmoViewModel.ToList();
         }

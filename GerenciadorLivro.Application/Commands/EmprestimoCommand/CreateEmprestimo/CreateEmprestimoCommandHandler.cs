@@ -15,11 +15,11 @@ namespace GerenciadorLivro.Application.Commands.EmprestimoCQRS.CreateEmprestimo
         }
         public async Task<int> Handle(CreateEmprestimoCommand request, CancellationToken cancellationToken)
         {
-            var emprestimo = new Emprestimo(request.IdUsuario, request.IdLivro);
+            var emprestimo = new Emprestimo(request.UsuarioId, request.LivroId);
 
-            await _emprestimoRepository.RealizarEmprestimo(emprestimo.IdLivro, emprestimo.IdUsuario);
+            await _emprestimoRepository.RealizarEmprestimo(emprestimo.LivroId, emprestimo.UsuarioId);
 
-            return emprestimo.IdLivro;
+            return emprestimo.LivroId;
         }
     }
 }

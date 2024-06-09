@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorLivro.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(GerenciadorLivroDbContext))]
-    [Migration("20240605014626_AtivoLivro")]
-    partial class AtivoLivro
+    [Migration("20240609025215_InitialMigrations")]
+    partial class InitialMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,16 +31,10 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Migrations
                     b.Property<DateTime>("DataEmprestimo")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdLivro")
+                    b.Property<int>("LivroId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdUsuario")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LivroId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UsuarioId")
+                    b.Property<int>("UsuarioId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -62,7 +56,7 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Migrations
                     b.Property<int>("AnoPublicacao")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Ativo")
+                    b.Property<bool?>("Ativo")
                         .HasColumnType("bit");
 
                     b.Property<string>("Autor")
@@ -101,11 +95,15 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Migrations
                 {
                     b.HasOne("GerenciadorLivro.Core.Entites.Livro", "Livro")
                         .WithMany()
-                        .HasForeignKey("LivroId");
+                        .HasForeignKey("LivroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("GerenciadorLivro.Core.Entites.Usuario", "Usuario")
                         .WithMany()
-                        .HasForeignKey("UsuarioId");
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Livro");
 

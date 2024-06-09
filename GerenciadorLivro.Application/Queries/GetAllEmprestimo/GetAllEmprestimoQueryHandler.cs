@@ -2,6 +2,7 @@
 using GerenciadorLivro.Core.Repositories;
 using MediatR;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,11 +18,9 @@ namespace GerenciadorLivro.Application.Queries.GetAllEmpresitmo
         public async Task<List<EmprestimoViewModel>> Handle(GetAllEmprestimoQuery request, CancellationToken cancellationToken)
         {
             var emprestimos = await _repository.GetAllAsync();
+            var empresitmoViewModel = emprestimos.Select(e => new EmprestimoViewModel(e.Id, e.Usuario, e.IdLivro, e.Livro, e.DataEmprestimo));
 
-            //var empresitmoViewModel = emprestimos.Select(e => new EmprestimoViewModel(e.IdUsuario, e.IdLivro));
-
-            //return empresitmoViewModel.ToList();
-            return null;
+            return empresitmoViewModel.ToList();
         }
     }
 }

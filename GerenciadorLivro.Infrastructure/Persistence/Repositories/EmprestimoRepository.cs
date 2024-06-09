@@ -2,7 +2,6 @@
 using GerenciadorLivro.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Data;
 using System.Threading.Tasks;
 
 namespace GerenciadorLivro.Infrastructure.Persistence.Repositories
@@ -17,7 +16,7 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Repositories
 
         public async Task<List<Emprestimo>> GetAllAsync()
         {
-            return await _context.Emprestimo.ToListAsync();
+            return await _context.Emprestimo.Include(e => e.Usuario).Include(e => e.Livro).ToListAsync();
 
         }
 

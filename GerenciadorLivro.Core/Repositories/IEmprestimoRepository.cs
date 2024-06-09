@@ -12,6 +12,7 @@ namespace GerenciadorLivro.Core.Repositories
         void Update(Emprestimo emprestimo);
         Task SaveChangesAsync();
         Task<int> RemoveAsync(int id);
-        Task<Emprestimo> RealizarEmprestimo(int idLivro, int idUsuario);
+        Task<Emprestimo> RealizarEmprestimo(int idLivro, int idUsuario, int prazoDias);
+        int CalcularPrazoEmprestimo(Emprestimo emprestimo);
     }
 }

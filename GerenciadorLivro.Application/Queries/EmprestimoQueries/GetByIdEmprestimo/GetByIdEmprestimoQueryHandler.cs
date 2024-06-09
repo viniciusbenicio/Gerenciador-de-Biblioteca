@@ -16,8 +16,14 @@ namespace GerenciadorLivro.Application.Queries.EmprestimoQueries.GetByIdEmpresti
         public async Task<EmprestimoViewModel> Handle(GetByIdEmprestimoQuery request, CancellationToken cancellationToken)
         {
             var emprestimo = await _repository.GetByIdAsync(request.Id);
+            string mensagem = string.Empty;
+            var prazoAtraso = _repository.CalcularPrazoEmprestimo(emprestimo);
 
-            var emprestimoViewModel = new EmprestimoViewModel(emprestimo.UsuarioId, emprestimo.Usuario.Nome, emprestimo.LivroId,emprestimo.Livro.Titulo, emprestimo.DataEmprestimo);
+            mensagem = prazoAtraso > 0
+                 ? $"Seu empréstimo está com {prazoAtraso} dias de atraso para devolução, favor realizar devolução ou renove seu empréstimo"
+                 : $"Seu empréstimo está em dia";
+
+            var emprestimoViewModel = new EmprestimoViewModel(emprestimo.Usuario.Nome, emprestimo.Livro.Titulo, emprestimo.DataEmprestimo, emprestimo.DataDevolucao, mensagem);
 
             return emprestimoViewModel;
         }

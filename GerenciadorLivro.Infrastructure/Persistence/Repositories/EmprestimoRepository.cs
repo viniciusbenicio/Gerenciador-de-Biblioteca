@@ -1,6 +1,7 @@
 ﻿using GerenciadorLivro.Core.Entites;
 using GerenciadorLivro.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -55,7 +56,7 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Repositories
             return usuario.Id;
         }
 
-        public async Task<Emprestimo> RealizarEmprestimo(int idLivro, int idUsuario)
+        public async Task<Emprestimo> RealizarEmprestimo(int idLivro, int idUsuario, int prazoDias)
         {
             var livro = await _livroRepository.GetByIdAsync(idLivro);
 
@@ -63,10 +64,33 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Repositories
                 return null;
 
             var emprestimoLivro = new Emprestimo(idUsuario, livro.Id);
+
+            if (prazoDias == 0)
+            {
+                return null;
+            }
+
+            var dataDevolucao = emprestimoLivro.DataEmprestimo.AddDays(prazoDias);
+            emprestimoLivro.AtualizarDataDevolucao(dataDevolucao);
+
             await _context.Emprestimo.AddAsync(emprestimoLivro);
             await _context.SaveChangesAsync();
 
             return emprestimoLivro;
+        }
+
+        public int CalcularPrazoEmprestimo(Emprestimo emprestimo)
+        {
+            var DataAtual = DateTime.Now;
+            int diasDeAtraso = 0;
+
+            if (DataAtual > emprestimo.DataDevolucao)
+            {
+                TimeSpan diferenca = DataAtual - emprestimo.DataDevolucao.GetValueOrDefault();
+                diasDeAtraso = Math.Abs(diferenca.Days);
+            }
+
+            return diasDeAtraso;
         }
     }
 }

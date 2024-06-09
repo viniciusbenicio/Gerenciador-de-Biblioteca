@@ -10,8 +10,8 @@ namespace GerenciadorLivro.Application.Validators
             RuleFor(l => l.Titulo)
                 .MinimumLength(5)
                 .WithMessage("Informe um Título que contém mais de 3 caracteres")
-                .MaximumLength(100)
-                .WithMessage("O Título informado deve conter até 100 caracteres");
+                .MaximumLength(255)
+                .WithMessage("O Título informado deve conter até 255 caracteres");
           
         }
 }

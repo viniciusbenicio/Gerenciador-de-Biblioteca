@@ -16,11 +16,17 @@ namespace GerenciadorLivro.Core.Entites
         public int LivroId { get; private set; }
         public Livro Livro { get; private set; }
         public DateTime DataEmprestimo { get; private set; }
+        public DateTime? DataDevolucao { get; private set; }
 
         public void Atualizar(int livroId, DateTime dataEmprestimo)
         {
             LivroId = livroId;
             DataEmprestimo = dataEmprestimo;
+        }
+
+        public void AtualizarDataDevolucao(DateTime? dataDevolucao)
+        {
+            DataDevolucao = dataDevolucao;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace GerenciadorLivro.Application.Commands.EmprestimoCQRS.CreateEmprestimo
         {
             var emprestimo = new Emprestimo(request.UsuarioId, request.LivroId);
 
-            await _emprestimoRepository.RealizarEmprestimo(emprestimo.LivroId, emprestimo.UsuarioId);
+            await _emprestimoRepository.RealizarEmprestimo(emprestimo.LivroId, emprestimo.UsuarioId, request.PrazoDias);
 
             return emprestimo.LivroId;
         }

@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using GerenciadorLivro.API.Filters;
+using GerenciadorLivro.Application.Commands.CreateEmprestimo;
 using GerenciadorLivro.Application.Commands.CreateLivro;
 using GerenciadorLivro.Application.Commands.CreateUsuario;
 using GerenciadorLivro.Application.Validators;
@@ -32,6 +33,7 @@ namespace GerenciadorLivro.API
             services.AddDbContext<GerenciadorLivroDbContext>(options => options.UseSqlServer(connectionString));
             services.AddMediatR(opt => opt.RegisterServicesFromAssemblyContaining(typeof(CreateLivroCommand)));
             services.AddMediatR(opt => opt.RegisterServicesFromAssemblyContaining(typeof(CreateUsuarioCommand)));
+            services.AddMediatR(opt => opt.RegisterServicesFromAssemblyContaining(typeof(CreateEmprestimoCommand)));
 
             services.AddScoped<ILivroRepository, LivroRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();

@@ -1,7 +1,6 @@
 ﻿using GerenciadorLivro.Application.Commands.CreateUsuario;
 using GerenciadorLivro.Application.Commands.RemoveUsuario;
 using GerenciadorLivro.Application.Commands.UpdateUsuario;
-using GerenciadorLivro.Application.Queries.GetAllLivros;
 using GerenciadorLivro.Application.Queries.GetAllUsuarios;
 using GerenciadorLivro.Application.Queries.GetByIdUsuario;
 using MediatR;

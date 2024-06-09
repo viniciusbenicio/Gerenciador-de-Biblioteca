@@ -8,8 +8,11 @@ namespace GerenciadorLivro.Application.Validators
         public CreateLivroCommandValidator()
         {
             RuleFor(l => l.Titulo)
-                .MinimumLength(3)
-                .WithMessage("Informe um Título que contém mais de 3 caracteres");
+                .MinimumLength(5)
+                .WithMessage("Informe um Título que contém mais de 3 caracteres")
+                .MaximumLength(100)
+                .WithMessage("O Título informado deve conter até 100 caracteres");
+          
         }
-    }
+}
 }

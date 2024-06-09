@@ -1,4 +1,4 @@
-﻿using GerenciadorLivro.Application.ViewModels;
+﻿using GerenciadorLivro.Application.ViewModels.EmprestimoViewModels;
 using MediatR;
 
 namespace GerenciadorLivro.Application.Queries.EmprestimoQueries.GetByIdEmprestimo

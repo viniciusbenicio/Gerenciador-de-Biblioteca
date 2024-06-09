@@ -1,4 +1,4 @@
-﻿using GerenciadorLivro.Application.ViewModels;
+﻿using GerenciadorLivro.Application.ViewModels.LivroViewModel;
 using GerenciadorLivro.Core.Repositories;
 using MediatR;
 using System.Collections.Generic;

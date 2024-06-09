@@ -1,4 +1,4 @@
-﻿using GerenciadorLivro.Application.ViewModels;
+﻿using GerenciadorLivro.Application.ViewModels.UsuarioViewModel;
 using MediatR;
 
 namespace GerenciadorLivro.Application.Queries.UsuarioQueries.GetByIdUsuario

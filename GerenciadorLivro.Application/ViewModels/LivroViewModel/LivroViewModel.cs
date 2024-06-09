@@ -1,4 +1,4 @@
-﻿namespace GerenciadorLivro.Application.ViewModels
+﻿namespace GerenciadorLivro.Application.ViewModels.LivroViewModel
 {
     public class LivroViewModel
     {

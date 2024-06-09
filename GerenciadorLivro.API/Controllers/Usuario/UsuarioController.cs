@@ -7,7 +7,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace GerenciadorLivro.API.Controllers
+namespace GerenciadorLivro.API.Controllers.Usuario
 {
     [Route("api/usuarios")]
     public class UsuarioController : ControllerBase

@@ -7,7 +7,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace GerenciadorLivro.API.Controllers
+namespace GerenciadorLivro.API.Controllers.Livro
 {
     [Route("api/livros")]
     public class LivroController : ControllerBase
@@ -42,7 +42,7 @@ namespace GerenciadorLivro.API.Controllers
         {
             var id = await _mediator.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id = id }, command);
+            return CreatedAtAction(nameof(GetById), new { id }, command);
         }
 
         [HttpPut("{id}")]

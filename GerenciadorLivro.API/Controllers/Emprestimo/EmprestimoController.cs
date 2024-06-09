@@ -7,7 +7,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace GerenciadorLivro.API.Controllers
+namespace GerenciadorLivro.API.Controllers.Emprestimo
 {
     [Route("api/Emprestimos")]
     public class EmprestimoController : ControllerBase

@@ -1,8 +1,8 @@
-﻿using GerenciadorLivro.Application.Commands.CreateEmprestimo;
-using GerenciadorLivro.Application.Commands.RemoveEmprestimo;
-using GerenciadorLivro.Application.Commands.UpdateEmprestimo;
-using GerenciadorLivro.Application.Queries.GetAllEmpresitmo;
-using GerenciadorLivro.Application.Queries.GetByIdEmprestimo;
+﻿using GerenciadorLivro.Application.Commands.EmprestimoCQRS.CreateEmprestimo;
+using GerenciadorLivro.Application.Commands.EmprestimoCQRS.RemoveEmprestimo;
+using GerenciadorLivro.Application.Commands.EmprestimoCQRS.UpdateEmprestimo;
+using GerenciadorLivro.Application.Queries.EmprestimoQueries.GetAllEmprestimo;
+using GerenciadorLivro.Application.Queries.EmprestimoQueries.GetByIdEmprestimo;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

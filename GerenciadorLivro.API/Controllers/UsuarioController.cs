@@ -1,8 +1,8 @@
-﻿using GerenciadorLivro.Application.Commands.CreateUsuario;
-using GerenciadorLivro.Application.Commands.RemoveUsuario;
-using GerenciadorLivro.Application.Commands.UpdateUsuario;
-using GerenciadorLivro.Application.Queries.GetAllUsuarios;
-using GerenciadorLivro.Application.Queries.GetByIdUsuario;
+﻿using GerenciadorLivro.Application.Commands.UsuarioCQRS.CreateUsuario;
+using GerenciadorLivro.Application.Commands.UsuarioCQRS.RemoveUsuario;
+using GerenciadorLivro.Application.Commands.UsuarioCQRS.UpdateUsuario;
+using GerenciadorLivro.Application.Queries.UsuarioQueries.GetAllUsuarios;
+using GerenciadorLivro.Application.Queries.UsuarioQueries.GetByIdUsuario;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

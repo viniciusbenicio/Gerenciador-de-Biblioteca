@@ -1,8 +1,8 @@
-﻿using GerenciadorLivro.Application.Commands.CreateLivro;
-using GerenciadorLivro.Application.Commands.RemoveLivro;
-using GerenciadorLivro.Application.Commands.UpdateLivro;
-using GerenciadorLivro.Application.Queries.GetAllLivros;
-using GerenciadorLivro.Application.Queries.GetByIdLivro;
+﻿using GerenciadorLivro.Application.Commands.LivroCQRS.CreateLivro;
+using GerenciadorLivro.Application.Commands.LivroCQRS.RemoveLivro;
+using GerenciadorLivro.Application.Commands.LivroCQRS.UpdateLivro;
+using GerenciadorLivro.Application.Queries.LivroQueries.GetAllLivros;
+using GerenciadorLivro.Application.Queries.LivroQueries.GetByIdLivro;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using GerenciadorLivro.Application.Commands.CreateLivro;
+using GerenciadorLivro.Application.Commands.LivroCQRS.CreateLivro;
 
 namespace GerenciadorLivro.Application.Validators
 {

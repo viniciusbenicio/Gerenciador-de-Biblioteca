@@ -1,8 +1,8 @@
 using FluentValidation.AspNetCore;
 using GerenciadorLivro.API.Filters;
-using GerenciadorLivro.Application.Commands.CreateEmprestimo;
-using GerenciadorLivro.Application.Commands.CreateLivro;
-using GerenciadorLivro.Application.Commands.CreateUsuario;
+using GerenciadorLivro.Application.Commands.EmprestimoCQRS.CreateEmprestimo;
+using GerenciadorLivro.Application.Commands.LivroCQRS.CreateLivro;
+using GerenciadorLivro.Application.Commands.UsuarioCQRS.CreateUsuario;
 using GerenciadorLivro.Application.Validators;
 using GerenciadorLivro.Core.Repositories;
 using GerenciadorLivro.Infrastructure;

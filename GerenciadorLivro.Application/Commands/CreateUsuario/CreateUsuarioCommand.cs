@@ -2,7 +2,7 @@
 
 namespace GerenciadorLivro.Application.Commands.CreateUsuario
 {
-    public class CreateUsuarioCommand : IRequest
+    public class CreateUsuarioCommand : IRequest<int>
     {
         public CreateUsuarioCommand(string nome, string email)
         {

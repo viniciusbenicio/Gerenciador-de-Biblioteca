@@ -12,5 +12,6 @@ namespace GerenciadorLivro.Core.Repositories
         void Update(Usuario usuario);
         Task SaveChangesAsync();
         Task<int> RemoveAsync(int id);
+        Task<Usuario> GetUserByEmailAndPasswordAsync(string email, string passwordHash);
     }
 }

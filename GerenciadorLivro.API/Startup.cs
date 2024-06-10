@@ -6,6 +6,7 @@ using GerenciadorLivro.Application.Commands.UsuarioCQRS.CreateUsuario;
 using GerenciadorLivro.Application.Validators;
 using GerenciadorLivro.Core.Repositories;
 using GerenciadorLivro.Infrastructure;
+using GerenciadorLivro.Infrastructure.Auth;
 using GerenciadorLivro.Infrastructure.Persistence.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -41,6 +42,8 @@ namespace GerenciadorLivro.API
             services.AddScoped<ILivroRepository, LivroRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IEmprestimoRepository, EmprestimoRepository>();
+            services.AddScoped<IAuthService, AuthService>();
+
             services.AddControllers(opt => opt.Filters.Add(typeof(ValidatorFilter))).AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateLivroCommandValidator>());
             services.AddSwaggerGen(c =>
             {
@@ -104,6 +107,7 @@ namespace GerenciadorLivro.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -9,14 +9,19 @@ namespace GerenciadorLivro.Application.Commands.UsuarioCQRS.CreateUsuario
     public class CreateUsuarioCommandHandler : IRequestHandler<CreateUsuarioCommand, int>
     {
         private readonly IUsuarioRepository _repository;
-        public CreateUsuarioCommandHandler(IUsuarioRepository repository)
+        private readonly IAuthService _authService;
+
+        public CreateUsuarioCommandHandler(IUsuarioRepository repository, IAuthService authService)
         {
             _repository = repository;
+            _authService = authService;
         }
 
         public async Task<int> Handle(CreateUsuarioCommand request, CancellationToken cancellationToken)
         {
-            var usuario = new Usuario(request.Nome, request.Email);
+            var passwordHash = _authService.ComputeSha256Hash(request.Senha);
+
+            var usuario = new Usuario(request.Nome, request.Email, passwordHash, request.Role);
 
             await _repository.AddAsync(usuario);
 

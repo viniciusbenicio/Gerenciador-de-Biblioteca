@@ -4,12 +4,14 @@ using GerenciadorLivro.Application.Commands.LivroCQRS.UpdateLivro;
 using GerenciadorLivro.Application.Queries.LivroQueries.GetAllLivros;
 using GerenciadorLivro.Application.Queries.LivroQueries.GetByIdLivro;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace GerenciadorLivro.API.Controllers.Livro
 {
     [Route("api/livros")]
+    [Authorize]
     public class LivroController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -19,6 +21,8 @@ namespace GerenciadorLivro.API.Controllers.Livro
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin,comum")]
+
         public async Task<IActionResult> Get(string query)
         {
             var getAllLivros = new GetAllLivrosQuery(query);
@@ -28,6 +32,8 @@ namespace GerenciadorLivro.API.Controllers.Livro
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "admin,comum")]
+
         public async Task<IActionResult> GetById(int id)
         {
             var query = new GetByIdLivroQuery(id);
@@ -38,6 +44,7 @@ namespace GerenciadorLivro.API.Controllers.Livro
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Post([FromBody] CreateLivroCommand command)
         {
             var id = await _mediator.Send(command);
@@ -46,6 +53,7 @@ namespace GerenciadorLivro.API.Controllers.Livro
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Put([FromBody] UpdateLivroCommand command)
         {
             await _mediator.Send(command);
@@ -54,6 +62,7 @@ namespace GerenciadorLivro.API.Controllers.Livro
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete([FromBody] RemoveLivroCommand command)
         {
             var id = await _mediator.Send(command);

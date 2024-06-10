@@ -52,5 +52,10 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Repositories
 
             return usuario.Id;
         }
+
+        public async Task<Usuario> GetUserByEmailAndPasswordAsync(string email, string passwordHash)
+        {
+            return await _context.Usuarios.SingleOrDefaultAsync(u => u.Email == email && u.Senha == passwordHash);
+        }
     }
 }

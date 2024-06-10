@@ -4,12 +4,14 @@ using GerenciadorLivro.Application.Commands.EmprestimoCQRS.UpdateEmprestimo;
 using GerenciadorLivro.Application.Queries.EmprestimoQueries.GetAllEmprestimo;
 using GerenciadorLivro.Application.Queries.EmprestimoQueries.GetByIdEmprestimo;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace GerenciadorLivro.API.Controllers.Emprestimo
 {
     [Route("api/Emprestimos")]
+    [Authorize]
     public class EmprestimoController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -19,6 +21,7 @@ namespace GerenciadorLivro.API.Controllers.Emprestimo
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin,comum")]
         public async Task<IActionResult> Get(string query)
         {
             var getAllEmprestimos = new GetAllEmprestimoQuery(query);
@@ -28,6 +31,7 @@ namespace GerenciadorLivro.API.Controllers.Emprestimo
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "admin,comum")]
         public async Task<IActionResult> GetById(int id)
         {
             var query = new GetByIdEmprestimoQuery(id);
@@ -39,6 +43,7 @@ namespace GerenciadorLivro.API.Controllers.Emprestimo
         }
 
         [HttpPost("")]
+        [Authorize(Roles = "admin,comum")]
         public async Task<IActionResult> Post([FromBody] CreateEmprestimoCommand command)
         {
             var id = await _mediator.Send(command);
@@ -47,6 +52,7 @@ namespace GerenciadorLivro.API.Controllers.Emprestimo
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin,comum")]
         public async Task<IActionResult> Put([FromBody] UpdateEmprestimoCommand command)
         {
             await _mediator.Send(command);
@@ -55,6 +61,7 @@ namespace GerenciadorLivro.API.Controllers.Emprestimo
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete([FromBody] RemoveEmprestimoCommand command)
         {
             var id = await _mediator.Send(command);

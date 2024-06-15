@@ -10,7 +10,7 @@ API para gerenciar empréstimos de livros, incluindo operações com usuários e
   - [Padrão Repository](#padrão-repository)
   - [CQRS](#cqrs)
 
-- [Autenticação](#autenticacao)
+- [Autenticação](#autenticação)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Instalação](#instalação)
 - [Como Usar](#como-usar)

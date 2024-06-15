@@ -8,6 +8,7 @@
             Autor = autor;
             ISBN = iSBN;
             AnoPublicacao = anoPublicacao;
+            Ativo = true;
         }
 
         public string Titulo { get; private set; }

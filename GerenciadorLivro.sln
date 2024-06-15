@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorLivro.API", "GerenciadorLivro.API\GerenciadorLivro.API.csproj", "{98272C04-5AFB-41E6-9245-95C76E737DD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorLivro.API", "GerenciadorLivro.API\GerenciadorLivro.API.csproj", "{98272C04-5AFB-41E6-9245-95C76E737DD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorLivro.Application", "GerenciadorLivro.Application\GerenciadorLivro.Application.csproj", "{4BFDB6D3-0028-497A-B8A4-A22B17D025DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorLivro.Application", "GerenciadorLivro.Application\GerenciadorLivro.Application.csproj", "{4BFDB6D3-0028-497A-B8A4-A22B17D025DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorLivro.Core", "GerenciadorLivro.Core\GerenciadorLivro.Core.csproj", "{FF0246A8-64A6-498D-A959-7C489D6D4847}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorLivro.Core", "GerenciadorLivro.Core\GerenciadorLivro.Core.csproj", "{FF0246A8-64A6-498D-A959-7C489D6D4847}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorLivro.Infrastructure", "GerenciadorLivro.Infrastructure\GerenciadorLivro.Infrastructure.csproj", "{2C4392BC-D196-4C80-8E1A-0153DAEDCC7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorLivro.Infrastructure", "GerenciadorLivro.Infrastructure\GerenciadorLivro.Infrastructure.csproj", "{2C4392BC-D196-4C80-8E1A-0153DAEDCC7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorLivro.UnitTests", "GerenciadorLivro.UnitTests\GerenciadorLivro.UnitTests.csproj", "{7FA3C2C1-3D9B-4FDF-8DC8-42807F5D8EB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{2C4392BC-D196-4C80-8E1A-0153DAEDCC7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C4392BC-D196-4C80-8E1A-0153DAEDCC7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C4392BC-D196-4C80-8E1A-0153DAEDCC7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA3C2C1-3D9B-4FDF-8DC8-42807F5D8EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA3C2C1-3D9B-4FDF-8DC8-42807F5D8EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA3C2C1-3D9B-4FDF-8DC8-42807F5D8EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA3C2C1-3D9B-4FDF-8DC8-42807F5D8EB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

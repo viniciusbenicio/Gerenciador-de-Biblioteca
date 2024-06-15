@@ -55,7 +55,32 @@ A autenticação é feita através do cabeçalho `Authorization` usando o esquem
 Authorization: Bearer {seu_token_jwt}
 ```
 
+No projeto GerenciadorLivro, implementamos um controlador para gerenciar operações de livros, empréstimos e usuários com autenticação e autorização adequadas. Confira:
 
+#### 📖 Operações com Livros
+
+1. GET /api/livros: Retorna todos os livros. 🔐 Acesso: "admin" e "comum".
+2. GET /api/livros/{id}: Retorna um livro pelo ID. 🔐 Acesso: "admin" e "comum".
+3. POST /api/livros: Cria um novo livro. 🔐 Acesso: "admin".
+4. PUT /api/livros/{id}: Atualiza um livro. 🔐 Acesso: "admin".
+5. DELETE /api/livros/{id}: Remove um livro. 🔐 Acesso: "admin".
+
+#### 📅 Operações com Empréstimos
+
+1. GET /api/emprestimos: Retorna todos os empréstimos. 🔐 Acesso: "admin" e "comum".
+2. GET /api/emprestimos/{id}: Retorna um empréstimo pelo ID. 🔐 Acesso: "admin" e "comum".
+3. POST /api/emprestimos: Cria um novo empréstimo. 🔐 Acesso: "admin" e "comum".
+4. PUT /api/emprestimos/{id}: Atualiza um empréstimo. 🔐 Acesso: "admin" e "comum".
+5. DELETE /api/emprestimos/{id}: Remove um empréstimo. 🔐 Acesso: "admin".
+
+#### 👤 Operações com Usuários
+
+1. GET /api/usuarios: Retorna todos os usuários. 🔐 Acesso: "admin".
+2. GET /api/usuarios/{id}: Retorna um usuário pelo ID. 🔐 Acesso: "admin".
+3. POST /api/usuarios: Cria um novo usuário. 🌐 Acesso: aberto.
+4. PUT /api/usuarios/{id}: Atualiza um usuário. 🔐 Acesso: "admin".
+5. DELETE /api/usuarios/{id}: Remove um usuário. 🔐 Acesso: "admin".
+6. PUT /api/usuarios/login: Realiza login. 🌐 Acesso: aberto.
 
 ## Tecnologias Utilizadas
 

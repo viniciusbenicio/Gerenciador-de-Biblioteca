@@ -9,6 +9,8 @@ API para gerenciar empréstimos de livros, incluindo operações com usuários e
   - [Clean Architecture](#clean-architecture)
   - [Padrão Repository](#padrão-repository)
   - [CQRS](#cqrs)
+
+- [Autenticação](#autenticacao)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Instalação](#instalação)
 - [Como Usar](#como-usar)

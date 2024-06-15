@@ -41,6 +41,22 @@ O padrão de repositório é utilizado para criar uma abstração entre a camada
 
 CQRS (Command Query Responsibility Segregation) é um padrão que separa a leitura e escrita de dados. Isso significa que comandos (operações de escrita) e consultas (operações de leitura) são tratados por modelos diferentes. Isso melhora a escalabilidade e facilita a manutenção do código.
 
+## Autenticação
+
+A API utiliza autenticação JWT para proteger os endpoints. Para acessar os endpoints protegidos, você precisa incluir o token JWT no cabeçalho da solicitação.
+
+### Autenticação JWT
+
+A autenticação é feita através do cabeçalho `Authorization` usando o esquema `Bearer`.
+
+**Cabeçalho da solicitação:**
+
+```http
+Authorization: Bearer {seu_token_jwt}
+```
+
+
+
 ## Tecnologias Utilizadas
 
 - [.NET Core](https://dotnet.microsoft.com/)
@@ -81,6 +97,27 @@ dotnet run
 Acesse em seu navegador: `http://localhost:44380`.
 
 ## Rotas da API
+
+### Endpoints de Autenticação
+
+- **Login do Usuário**
+
+  `PUT /api/usuarios/login`
+  
+  Request Body:
+  ```json
+  {
+    "email": "string",
+    "senha": "string"
+  }
+  ```
+
+  Response:
+  ```json
+  {
+    "token": "string"
+  }
+  ```
 
 ### Emprestimos
 

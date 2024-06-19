@@ -74,7 +74,7 @@ namespace GerenciadorLivro.Infrastructure.Persistence.Repositories
             emprestimoLivro.AtualizarDataDevolucao(dataDevolucao);
 
             await _context.Emprestimo.AddAsync(emprestimoLivro);
-            await _context.SaveChangesAsync();
+            
 
             return emprestimoLivro;
         }

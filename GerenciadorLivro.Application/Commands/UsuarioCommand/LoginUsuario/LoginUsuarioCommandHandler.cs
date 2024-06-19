@@ -1,5 +1,6 @@
 ﻿using GerenciadorLivro.Application.ViewModels.UsuarioViewModel;
 using GerenciadorLivro.Core.Repositories;
+using GerenciadorLivro.Core.Services;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

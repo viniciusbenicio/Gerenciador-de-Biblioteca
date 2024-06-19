@@ -1,5 +1,6 @@
 ﻿using GerenciadorLivro.Core.Entites;
 using GerenciadorLivro.Core.Repositories;
+using GerenciadorLivro.Core.Services;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

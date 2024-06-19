@@ -2,14 +2,12 @@
 using GerenciadorLivro.Application.Commands.LivroCQRS.CreateLivro;
 using GerenciadorLivro.Application.Commands.UsuarioCQRS.CreateUsuario;
 using GerenciadorLivro.Core.Repositories;
+using GerenciadorLivro.Core.Services;
 using GerenciadorLivro.Infrastructure.Auth;
+using GerenciadorLivro.Infrastructure.Mail;
+using GerenciadorLivro.Infrastructure.MessageBus;
 using GerenciadorLivro.Infrastructure.Persistence.Repositories;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using System.Text;
 
 namespace GerenciadorLivro.API.Extensions
 {
@@ -23,6 +21,8 @@ namespace GerenciadorLivro.API.Extensions
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IEmprestimoRepository, EmprestimoRepository>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IMailService, MailService>();
+            services.AddScoped<IMessageBusService, MessageBusService>();
 
             return services;
         }

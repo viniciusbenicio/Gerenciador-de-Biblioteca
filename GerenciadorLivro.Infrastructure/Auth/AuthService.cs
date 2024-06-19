@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System;
 using System.Security.Cryptography;
-using GerenciadorLivro.Core.Repositories;
+using GerenciadorLivro.Core.Services;
 
 namespace GerenciadorLivro.Infrastructure.Auth
 {

@@ -4,6 +4,7 @@ using GerenciadorLivro.API.Filters;
 using GerenciadorLivro.Application.Commands.EmprestimoCQRS.CreateEmprestimo;
 using GerenciadorLivro.Application.Commands.LivroCQRS.CreateLivro;
 using GerenciadorLivro.Application.Commands.UsuarioCQRS.CreateUsuario;
+using GerenciadorLivro.Application.Consumer;
 using GerenciadorLivro.Application.Validators;
 using GerenciadorLivro.Core.Repositories;
 using GerenciadorLivro.Infrastructure;
@@ -36,6 +37,7 @@ namespace GerenciadorLivro.API
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<GerenciadorLivroDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddHostedService<SendMailOkConsumer>();
 
             services.AddMediatR();
             services.AddInfrastructure();

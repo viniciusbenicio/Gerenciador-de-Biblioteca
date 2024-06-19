@@ -1,4 +1,4 @@
-﻿namespace GerenciadorLivro.Core.Repositories
+﻿namespace GerenciadorLivro.Core.Services
 {
     public interface IAuthService
     {

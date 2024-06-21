@@ -97,7 +97,7 @@ Instruções para instalar e rodar o projeto localmente.
 
 ```bash
 # Clone o repositório
-git clone https://github.com/usuario/nome-do-projeto.git
+git clone https://github.com/viniciusbenicio/GerenciadorLivro.git
 
 # Navegue até o diretório do projeto
 cd nome-do-projeto
